@@ -1,0 +1,27 @@
+{% extends "template.html" %}
+{% block content %}
+    <h2>Welcome to the Reminder App!</h2>
+    <br/>
+    <br/>
+    <h3>Add a new Reminder:</h3>
+    <form action = "{{ url_for('add') }}" method="post" class="add">
+        <div>
+            <label>Task:</label>
+            <input name="task" type="text">
+        </div>
+        <div>
+            <label>Add Reminder:</label>
+            <textarea name="reminder" rows="5" cols="40"></textarea>
+        </div>
+        <div class="">
+            <input class="button" type="submit" value="Save">
+        </div>
+    </form>
+    <br>
+    <br>
+    <h3>Reminders:</h3>
+    {% for r in reminders %}
+        <strong>Task:</strong> {{ r.task }} <br/>
+        <strong>Task Description :</strong> {{ r.reminder }} <br/>
+    {% endfor %}
+{% endblock %}
