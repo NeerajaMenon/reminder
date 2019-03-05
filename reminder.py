@@ -67,6 +67,5 @@ def main():
     reminders = [dict(task=row[0], reminder=row[1]) for row in cur.fetchall()]
     g.db.close()
     return render_template('main.html', reminders=reminders)
-
 if __name__ == '__main__':
     app.run(debug=True)

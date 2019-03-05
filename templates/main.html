@@ -1,19 +1,29 @@
 {% extends "template.html" %}
 {% block content %}
+    <style>
+body{
+    background-image:url("https://images.wallpaperscraft.com/image/alarm_clock_minimalism_pink_120744_1280x1024.jpg");
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
     <h2>Welcome to the Reminder App!</h2>
     <p><a href="{{ url_for('logout') }}">Log out</a></p>
-    <h3>Please log in to access your blog.</h3>
-    <p>Temp Log in: <a href="/main">Log in</a></p>
+    
+    <p><a href="/main">Log in</a></p>
     <br/>
     <br/>
-    <h3>Add a new Reminder:</h3>
+    <h3>Add a New Reminder:</h3>
     <form action = "{{ url_for('add') }}" method="post" class="add">
+        
         <div>
-            <label>Task:</label>
-            <input name="task" type="text">
-        </div>
+            <label>Task:</label><div>
+            <input name="task" type="text" style="float:left"><br><br>
+        </div> 
         <div>
-            <label>Add Reminder:</label>
+            <label>Add Reminder:</label><br>
             <textarea name="reminder" rows="5" cols="40"></textarea>
         </div>
         <div class="">
@@ -23,8 +33,16 @@
     <br>
     <br>
     <h3>Reminders:</h3>
+    <table style="margin:top;width:50%">
+    <tr>
+    <th><strong>Task</strong></th>
+    <th> <strong>Task Description</strong></th>
+    </tr>
     {% for r in reminders %}
-        <strong>Task:</strong> {{ r.task }} <br/>
-        <strong>Task Description :</strong> {{ r.reminder }} <br/>
+        <tr>
+        <td style="padding:8px"> {{ r.task }} </td>
+        <td style="padding:8px">{{ r.reminder }}</td>
+        </tr>
     {% endfor %}
+    </table>
 {% endblock %}
